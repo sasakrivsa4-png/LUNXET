@@ -11,7 +11,6 @@
         header { background: #000; color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 1000; }
 
         
-        /* Стилі для нової кнопки AI */
         .ai-header-btn {
             display: flex;
             align-items: center;
@@ -65,40 +64,37 @@
         .chip { padding: 8px 18px; background: #eee; border-radius: 20px; font-size: 13px; white-space: nowrap; cursor: pointer; border: none; }
         .chip.active { background: var(--main); font-weight: bold; }
         
-/* Світла бокова панель у стилі твого сайту */
 .sidebar { 
     position: fixed; 
     left: -280px; 
     top: 0; 
     width: 280px; 
     height: 100%; 
-    background: #ffffff; /* Чистий білий фон */
+    background: #ffffff; 
     z-index: 3000; 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
     box-sizing: border-box; 
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #eee; /* Легка межа */
+    border-right: 1px solid #eee; 
 }
 
 .sidebar.open { 
     left: 0; 
-    box-shadow: 15px 0 40px rgba(0,0,0,0.08); /* М'яка тінь */
+    box-shadow: 15px 0 40px rgba(0,0,0,0.08); 
 }
 
-/* Шапка меню */
 .sidebar-header {
     padding: 25px 20px;
     background: #fcfcfc;
     border-bottom: 1px solid #f0f0f0;
 }
 
-/* Пункти меню: ідеальні пропорції */
 .menu-item {
     display: flex;
     align-items: center;
     padding: 14px 20px;
-    color: #555; /* Темно-сірий текст для кращого читання */
+    color: #555; 
     text-decoration: none;
     cursor: pointer;
     transition: 0.2s;
@@ -115,14 +111,14 @@
     width: 20px;
     text-align: center;
     font-size: 18px;
-    color: #888; /* Іконки трохи світліші за текст */
+    color: #888;
 }
 
 /* Активний пункт (наприклад, AI або Гра) */
 .menu-item.active {
     color: #000;
     font-weight: 700;
-    background: rgba(205, 239, 46, 0.1); /* Твій фірмовий колір з прозорістю */
+    background: rgba(205, 239, 46, 0.1); 
     border-left: 4px solid var(--main);
 }
 
@@ -130,7 +126,6 @@
     color: #000;
 }
 
-/* Підменю */
 #sub-menu {
     background: #fafafa;
 }
@@ -148,7 +143,6 @@
     background: #f0f0f0;
 }
 
-/* Футер меню */
 .sidebar-footer {
     margin-top: auto;
     padding: 20px;
@@ -171,7 +165,6 @@
         #game-canvas { width: 100%; height: 400px; background: #000; border-radius: 15px; position: relative; overflow: hidden; }
         .game-item { position: absolute; font-size: 35px; cursor: pointer; }
 
-/* 1. Оновлюємо шапку: іконки в один ряд справа */
 header { 
     background: #000; 
     padding: 12px 5%; 
@@ -183,10 +176,9 @@ header {
 .header-right { 
     display: flex; 
     align-items: center; 
-    gap: 18px; /* Відстань між іконками */
+    gap: 18px;
 }
 
-/* 2. Стиль для випадаючого списку мов */
 .lang-box { position: relative; cursor: pointer; font-size: 13px; color: var(--main); font-weight: 800; }
 .lang-dropdown { 
     display: none; position: absolute; top: 25px; right: 0; 
@@ -194,15 +186,12 @@ header {
 }
 .lang-dropdown div { padding: 10px; border-bottom: 1px solid #eee; }
 
-/* 3. Стиль для іконок (акаунт, кошик, серце) */
 .icon-btn { font-size: 20px; color: #fff; cursor: pointer; position: relative; }
 .icon-btn:hover { color: var(--main); }
 
-/* 4. Приховуємо нижню панель (як ти просила) */
 .bottom-bar { display: none !important; }
 body { padding-bottom: 0 !important; }
 
-/* 5. Кнопка серця на картці товару */
 .fav-btn { 
     position: absolute; top: 10px; right: 10px; 
     background: rgba(255,255,255,0.7); width: 30px; height: 30px; 
@@ -630,7 +619,6 @@ body { padding-bottom: 0 !important; }
     window.onload = load;
 function toggleLang() {
     const list = document.getElementById('lang-list');
-    // Перевіряємо поточний стан і перемикаємо
     if (list.style.display === 'block') {
         list.style.display = 'none';
     } else {
@@ -639,9 +627,9 @@ function toggleLang() {
 }
 
 function setLang(lang) {
-    document.getElementById('cur-lang').innerText = lang; // Міняємо текст на кнопці
+    document.getElementById('cur-lang').innerText = lang; 
     localStorage.setItem('selected_lang', lang);
-    toggleLang(); // Закриваємо меню після вибору
+    toggleLang();
     alert("Мову змінено на " + lang); 
 }
 </script>
