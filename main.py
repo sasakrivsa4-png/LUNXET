@@ -20,9 +20,8 @@ class ShopStates(StatesGroup):
     add_desc = State()
     add_sizes = State()
     add_images = State()
-    delete_mode = State() # Стан для вибору товару на видалення
+    delete_mode = State() 
 
-# --- КЛАВІАТУРИ ---
 
 def get_main_kb():
     return ReplyKeyboardMarkup(
@@ -41,9 +40,8 @@ def get_delete_kb():
     if not products:
         return None
 
-    # Створюємо кнопки з назвами товарів
     buttons = [[KeyboardButton(text=p['name'])] for p in products]
-    buttons.append([KeyboardButton(text="❌ Скасувати")]) # Кнопка для відміни
+    buttons.append([KeyboardButton(text="❌ Скасувати")]) 
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
 def get_cat_kb():
@@ -53,8 +51,6 @@ def get_cat_kb():
 def get_sizes_kb():
     sizes = ["S", "M", "L", "XL", "Універсальний", "Вписати свій ✏️"]
     return ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=s)] for s in sizes], resize_keyboard=True)
-
-# --- ХЕНДЛЕРИ ВИДАЛЕННЯ (КНОПКАМИ) ---
 
 @dp.message(F.text == "🗑️ Видалити товар")
 async def start_delete(m: Message, state: FSMContext):
@@ -77,7 +73,6 @@ async def process_delete(m: Message, state: FSMContext):
     with open('products.json', 'r', encoding='utf-8') as f:
         products = json.load(f)
 
-    # Фільтруємо: залишаємо всі, крім обраного
     new_products = [p for p in products if p.get('name') != name_to_delete]
 
     with open('products.json', 'w', encoding='utf-8') as f:
@@ -86,7 +81,6 @@ async def process_delete(m: Message, state: FSMContext):
     await m.answer(f"✅ Товар '{name_to_delete}' видалено з бази!", reply_markup=get_main_kb())
     await state.clear()
 
-# --- ХЕНДЛЕРИ ДОДАВАННЯ ---
 
 @dp.message(Command("start"))
 async def cmd_start(m: Message, state: FSMContext):
